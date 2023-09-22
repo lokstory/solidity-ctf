@@ -14,7 +14,7 @@ contract DefiMazeTest is Test {
     }
 
     /// @dev Easier solution:
-    //       Deposit ethers directly
+    //       Deposits ethers directly
     function test_attack() public {
         _setup.platfrom().calculateYield(0, 0, 0);
 

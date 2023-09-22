@@ -31,6 +31,7 @@ contract Attacker {
         _vault.withdraw();
     }
 }
+
 contract ByteVaultTest is Test {
     BytecodeVault internal _vault;
 
