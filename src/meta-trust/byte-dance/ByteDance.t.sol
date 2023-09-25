@@ -34,13 +34,13 @@ contract Metamorphic {
         //      (55)  : SSTORE
         //      (03)  : SUB
         //
-        // PUSH1 0101
-        // PUSH1 0101
+        // PUSH2 0101
+        // PUSH2 0101
         // DUP2
         // SUB
         // SSTORE
         //
-        // sstore(1 - 1, 1)
+        // sstore(65 - 65, 65)
         code = hex"610101_610101_81_03_55";
     }
 }
