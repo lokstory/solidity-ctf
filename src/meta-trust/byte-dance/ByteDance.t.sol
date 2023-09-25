@@ -40,7 +40,7 @@ contract Metamorphic {
         // SUB
         // SSTORE
         //
-        // sstore(65 - 65, 65)
+        // sstore(257 - 257, 257)
         code = hex"610101_610101_81_03_55";
     }
 }
