@@ -65,7 +65,7 @@ contract BytedanceTest is Test {
         _dance = new Bytedance();
     }
 
-    function test_exploit() public {
+    function test_attack() public {
         new Attacker(_dance);
 
         _dance.solve();

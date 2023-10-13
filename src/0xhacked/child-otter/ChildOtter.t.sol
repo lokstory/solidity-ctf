@@ -11,7 +11,7 @@ contract ChildOtterTest is Test {
         _otter = new ChildOtter();
     }
 
-    function test_exploit() public {
+    function test_attack() public {
         // slot: 0
         // keccak256(0, keccak256(0, 0))
         _otter.solve(uint256(keccak256(abi.encode(0, 0))));

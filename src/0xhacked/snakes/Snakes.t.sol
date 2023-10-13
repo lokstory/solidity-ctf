@@ -11,7 +11,7 @@ contract SnakesTest is Test {
         _snakes = new Snakes();
     }
 
-    function test_exploit() public {
+    function test_attack() public {
         // 60_00_35_60_e0_1c_60_02_60_0c_82_06_60_01_1b_61_06_b1_01_60_1e_39_60_00_51_56
         //
         // PUSH1 0
