@@ -5,9 +5,9 @@ import "forge-std/Test.sol";
 import "./CoinFlip.sol";
 
 contract CoinFlipTest is Test {
-    CoinFlip internal _flip;
-
     uint256 public constant FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
+    CoinFlip internal _flip;
 
     function setUp() public {
 //        vm.createSelectFork("sepolia", 4480085);
