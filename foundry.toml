@@ -11,3 +11,6 @@ ignored_error_codes = [
 ]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+[rpc_endpoints]
+sepolia = 'https://rpc.ankr.com/eth_sepolia'
