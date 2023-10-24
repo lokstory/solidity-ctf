@@ -4,10 +4,25 @@ out = "out"
 libs = ["lib"]
 
 ignored_error_codes = [
-    # license
+    # License
     1878,
-    # selfdestruct
-    5159
+    # Function state mutability can be restricted to pure
+    2018,
+    # Unused local variable
+    2072,
+    # Visibility for constructor is ignored
+    2462,
+    # SELFDESTRUCT
+    5159,
+    # Unused function parameter
+    5667,
+    # Unreachable code
+    5740,
+    # Return value of low-level calls not used
+    9302
 ]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+[rpc_endpoints]
+sepolia = "https://rpc.ankr.com/eth_sepolia"

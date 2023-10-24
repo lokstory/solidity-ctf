@@ -84,7 +84,7 @@ interface IERC20 {
 
 
 
-pragma solidity ^0.8.0;
+//pragma solidity ^0.8.0;
 
 /*
  * @dev Provides information about the current execution context, including the
@@ -111,7 +111,7 @@ abstract contract Context {
 
 
 
-pragma solidity ^0.8.0;
+//pragma solidity ^0.8.0;
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -413,7 +413,7 @@ contract ERC20 is Context, IERC20 {
 // File: contracts/guessgame.sol
 
 
-pragma solidity 0.8.21;
+//pragma solidity 0.8.21;
 
 
 contract A {
