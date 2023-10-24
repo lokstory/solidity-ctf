@@ -1,4 +1,4 @@
-module vanity
+module solidity-ctf
 
 go 1.20
 
