@@ -1,0 +1,54 @@
+// huffc ./PublicKey.huff -b --evm-version paris
+
+#define constant PUB_KEY_X = 0x00e3ae1974566ca06cc516d47e0fb165a674a3dabcfca15e722f0e3450f45889
+#define constant PUB_KEY_Y = 0x2aeabe7e4531510116217f07bf4d07300de97e4874f81f533420a72eeb0bd6a4
+#define constant ADDR = 0xFFfFfFffFFfffFFfFFfFFFFFffFFFffffFfFFFfF
+
+#define macro CONSTRUCTOR() = takes (0) returns (0) {
+    // [old_gas_left]
+    gas
+
+    // [addr, old_gas_left]
+    [ADDR]
+
+    // [addr_balance, old_gas_left]
+    balance
+
+    // clear unused balance value
+    // [old_gas_left]
+    pop
+
+    // [new_gas_left, old_gas_left]
+    gas
+
+    // [old_gas_left, new_gas_left]
+    swap1
+
+    // [gas_used]
+    sub
+
+    // 2000
+    // [0x7D0, gas_used]
+    0x7D0
+
+    // [gas_used, 0x7D0]
+    swap1
+
+    // if gas_used > 2000
+    // jump to first_call
+    gt first_call jumpi
+
+    // else return 0x0000000000000000000000000000000000000000000000000000000000000000
+    0x00 0x00 mstore
+    0x20 0x00 return
+
+    first_call:
+        // return concatenate bytes of PUB_KEY_X and PUB_KEY_Y
+        [PUB_KEY_X] 0x00 mstore
+        [PUB_KEY_Y] 0x20 mstore
+        0x40 0x00 return
+}
+
+#define macro MAIN() = takes (0) returns (0) {
+
+}
