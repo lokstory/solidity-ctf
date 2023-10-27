@@ -38,11 +38,11 @@ contract Lockbox2Test is Test {
 
         // stage 4:
         // a, b, d
-        // a: The offset of stage4 first parameter
-        // b: The offset of stage4 second parameter
+        // a: The offset of first bytes parameter
+        // b: The offset of second bytes parameter
         //
         // a = 97, msg.data.length < 500
-        // The length of first parameter will be [97:127],
+        // The length of first parameter will be msg.data[4:][97:127],
         // it means the last 31 bytes of d, then concat 0x00.
         // d must be 1,
         // and the length of first parameter will be 256 (0x100).
@@ -98,7 +98,8 @@ contract Lockbox2Test is Test {
             hex"61_07d0_90_11_61_002e_57",
             // 3.
             // When gas cost <= 2000 (warm access),
-            // return 0x0000000000000000000000000000000000000000000000000000000000000000
+            // return the invalid result
+            // 0x0000000000000000000000000000000000000000000000000000000000000000
             //
             // PUSH1 0x00
             // PUSH1 0x00
@@ -109,7 +110,7 @@ contract Lockbox2Test is Test {
             hex"60_00_60_00_52_60_20_60_00_f3",
             // 4.
             // Puts publicKeyX to memory [0:32] and publicKeyY to [32:64],
-            // then returns memory[0:64]
+            // then return memory[0:64]
             //
             // JUMPDEST
             // PUSH32 publicKeyX
@@ -123,15 +124,14 @@ contract Lockbox2Test is Test {
             // RETURN
             hex"5b_7f",
             bytes32(wallet.publicKeyX),
-            hex"60_00_52",
-            hex"7f",
+            hex"60_00_52_7f",
             bytes32(wallet.publicKeyY),
             hex"60_20_52_60_40_60_00_f3"
         );
 
         bytes memory prefix = new bytes(a - 96);
+        // Fills the data to 499 bytes
         bytes memory suffix = new bytes(500 - 1 - (4 + 128 + prefix.length + creationCode.length));
-//        bytes memory suffix = new bytes(b - (prefix.length + creationCode.length));
 
         bytes memory data = bytes.concat(
             hex"890d6908",
