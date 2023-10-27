@@ -5,34 +5,15 @@
 #define constant ADDR = 0xFFfFfFffFFfffFFfFFfFFFFFffFFFffffFfFFFfF
 
 #define macro CONSTRUCTOR() = takes (0) returns (0) {
-    // [old_gas_left]
-    gas
-
-    // [addr, old_gas_left]
-    [ADDR]
-
-    // [addr_balance, old_gas_left]
-    balance
-
-    // clear unused balance value
-    // [old_gas_left]
-    pop
-
-    // [new_gas_left, old_gas_left]
-    gas
-
-    // [old_gas_left, new_gas_left]
-    swap1
-
-    // [gas_used]
-    sub
-
-    // 2000
-    // [0x7D0, gas_used]
-    0x7D0
-
-    // [gas_used, 0x7D0]
-    swap1
+    gas             // [old_gas_left]
+    [ADDR]          // [addr, old_gas_left]
+    balance         // [addr_balance, old_gas_left]
+    pop             // [old_gas_left]
+    gas             // [new_gas_left, old_gas_left]
+    swap1           // [old_gas_left, new_gas_left]
+    sub             // [gas_used]
+    0x7D0           // [0x7D0, gas_used]
+    swap1           // [gas_used, 0x7D0]
 
     // if gas_used > 2000
     // jump to first_call
@@ -49,6 +30,4 @@
         0x40 0x00 return
 }
 
-#define macro MAIN() = takes (0) returns (0) {
-
-}
+#define macro MAIN() = takes (0) returns (0) {}
